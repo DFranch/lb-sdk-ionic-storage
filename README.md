@@ -1,6 +1,6 @@
-#Ionic Storage & LB SDK builder bug
+# Ionic Storage & LB SDK builder bug
 
-##Installation
+## Installation
 
 _Note: Requires ionic-cli setup_
 
