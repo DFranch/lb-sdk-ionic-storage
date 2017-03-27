@@ -5,8 +5,7 @@ import { HomePage } from '../pages/home/home';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import {IonicStorageModule, Storage} from "@ionic/storage";
-import {SDKBrowserModule} from "../shared/index";
-import {InternalStorage} from "../shared/storage/storage.swaps";
+import {SDKBrowserModule} from "../shared/sdk/index";
 
 export function provideStorage(): Storage {
   return new Storage({})
@@ -20,10 +19,7 @@ export function provideStorage(): Storage {
   imports: [
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot(),
-    SDKBrowserModule.forRoot({
-      provide: InternalStorage,
-      useFactory: provideStorage
-    })
+    SDKBrowserModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [

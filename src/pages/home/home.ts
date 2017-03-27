@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 
 import { NavController } from 'ionic-angular';
-import {UserApi} from "../../shared/services/custom/User";
+import {UserApi} from "../../shared/sdk/services/custom/User";
+import {ProjectApi} from "../../shared/sdk/services/custom/Project";
 
 @Component({
   selector: 'page-home',
@@ -9,7 +10,7 @@ import {UserApi} from "../../shared/services/custom/User";
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController, private userApi: UserApi) {
+  constructor(public navCtrl: NavController, private userApi: UserApi, private projectApi: ProjectApi) {
     
   }
 
@@ -17,14 +18,14 @@ export class HomePage {
     this.userApi.login({
       username: 'admin',
       password: 'admin'
-    }, 'user', true).subscribe((user) => {
+    }, null, true).subscribe((user) => {
       console.log(user);
     });
   }
 
-  getUsers() {
-    this.userApi.find({}).subscribe((users) => {
-      console.log("Users: ", users)
+  getProjects() {
+    this.projectApi.find({}).subscribe((projects) => {
+      console.log("Projects: ", projects)
     }, err => {
       console.error(err);
     })
